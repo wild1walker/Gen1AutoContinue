@@ -1,0 +1,83 @@
+name: Tests
+
+# The suite is not standalone: it compiles against the engine's mod-SDK
+# harness (tests.modkit) and the mod runtime (src.mods.Runtime), so it runs
+# from an engine checkout with this mod dropped into mods/<id>/ -- the same
+# place modkit expects it.  That is also why tests/ is export-ignored: those
+# requires would be a private-require finding against the packaged archive.
+#
+# `modkit.py validate` is deliberately not run here.  It boots the loader,
+# which needs extracted ROM data (src/core/Data.lua), and no ROM data can
+# live in CI.  lint is the half that runs without it, and it is the half
+# that matters for what gets published.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+env:
+  MOD_ID: gen1_auto_continue
+  ENGINE: bryanthaboi/gen1recomp
+
+jobs:
+  lua:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the mod
+        uses: actions/checkout@v4
+        with:
+          path: mod
+
+      - name: Install Lua
+        run: sudo apt-get update && sudo apt-get install -y lua5.4
+
+      - name: Syntax check
+        working-directory: mod
+        run: |
+          set -euo pipefail
+          lua5.4 -e "assert(loadfile('main.lua'))"
+          lua5.4 -e "assert(loadfile('mod.card'))"
+          python3 -c "import json; json.load(open('manifest.json'))"
+
+      - name: Mod index feed is current
+        working-directory: mod
+        run: python3 tools/build_index.py --check
+
+      - name: Check out the engine
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.ENGINE }}
+          path: engine
+
+      - name: Place the mod in the engine tree
+        run: |
+          set -euo pipefail
+          dest="engine/mods/$MOD_ID"
+          mkdir -p "$dest"
+          tar -c --exclude=.git -C mod . | tar -x -C "$dest"
+          ls "$dest"
+
+      - name: No ROM-derived content
+        working-directory: engine
+        run: python3 tools/modkit.py lint "mods/$MOD_ID"
+
+      - name: Run the suite
+        working-directory: engine
+        # the harness sets the exit code itself, so a FAILURES line fails here
+        run: lua5.4 "mods/$MOD_ID/tests/${MOD_ID}_test.lua"
+
+      - name: The packaged archive is what the installer expects
+        working-directory: mod
+        run: |
+          set -euo pipefail
+          # manifest.json at the archive root, and no tests/ in it
+          git archive HEAD | tar -t | sort > /tmp/archive.txt
+          cat /tmp/archive.txt
+          grep -qx 'manifest.json' /tmp/archive.txt
+          for leaked in tests/ .github/ site/ tools/; do
+            if grep -q "^${leaked}" /tmp/archive.txt; then
+              echo "::error::${leaked} leaked into the archive"; exit 1
+            fi
+          done
