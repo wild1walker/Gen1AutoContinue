@@ -1,0 +1,3 @@
+# the suite requires engine modules (tests.modkit, src.mods.Runtime); shipping
+# it would be a private-require finding against the packaged archive
+tests/gen1_auto_continue_test.lua

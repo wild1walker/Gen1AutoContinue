@@ -1,0 +1,29 @@
+-- Sharing metadata (25-community-and-ecosystem.md 3.2).  Read by tooling
+-- and the manager detail pane; never by the loader's merge.
+return {
+  summary = "Boot to title, one press, playing. No intro, no menu, no save-info window.",
+  author = "Wild",
+  tags = { "quality-of-life", "ui", "boot" },
+  differences = {
+    changed = {
+      "START / A at the title loads the save instead of opening the main menu",
+      "the CONTINUE info window (PLAYER / BADGES / POKeDEX / TIME) is skipped",
+      "B at the title runs EXIT GAME",
+      "SELECT at the title opens the CONTINUE / NEW GAME / OPTION / EXIT menu",
+      "the copyright card and attract movie are skipped; boot lands on the title",
+    },
+    added = { "mod options: AUTO CONTINUE, B EXITS GAME and SKIP INTRO" },
+    known = {
+      "skipping the intro also skips its music; the title theme starts as normal",
+      "B quits without a confirmation; nothing is lost, since no save is loaded at the title",
+      "what EXIT GAME does is the engine's call -- on desktop it usually restarts into the launcher",
+      "with no save on disk the main menu appears as normal, one frame later than vanilla",
+      "Gen 2 games are unaffected -- Gold's title has no main menu to skip",
+      "QUIT from the START menu returns to the title, where the next press reloads the last save",
+    },
+  },
+  credits = {
+    { who = "pret/pokered", for_ = "engine/movie/title.asm and engine/menus/main_menu.asm, the flow this shortens" },
+  },
+  compat = { engine = ">=1.0.0 <2.0.0", modApi = 2 },
+}

@@ -1,0 +1,23 @@
+{
+  "id": "gen1_auto_continue",
+  "name": "Gen1AutoContinue",
+  "version": "1.2.0",
+  "api": 2,
+  "entry": "main.lua",
+  "profile": "content",
+  "game_version": ">=0.0.0-dev <2.0.0",
+  "category": "QOL",
+  "priority": 100,
+  "affects_link": false,
+  "dependencies": [],
+  "optional_dependencies": [],
+  "conflicts": [],
+  "incompatible": [],
+  "games": [
+    "gen1"
+  ],
+  "experimental": false,
+  "description": "Boots straight to the title, then START loads your save. Skips the copyright card and attract movie, the CONTINUE / NEW GAME menu, and the save-info window. B exits; SELECT opens the ordinary menu.",
+  "github": "wild1walker/Gen1AutoContinue",
+  "author": "Wild"
+}
