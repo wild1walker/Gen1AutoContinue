@@ -1,6 +1,8 @@
 <p align="center">
-  <img src="docs/banner.png" alt="Gen1AutoContinue" width="470">
+  <img src="docs/banner.png" alt="Gen1Wild" width="400">
 </p>
+
+<h1 align="center">Gen1AutoContinue</h1>
 
 <p align="center">
   <b>Boot to title, one press, playing</b>
