@@ -1,4 +1,16 @@
-# Gen1AutoContinue
+<p align="center">
+  <a href="https://wild1walker.github.io/Gen1Wild/"><img src="docs/banner.png" alt="Gen1Wild" width="400"></a>
+</p>
+
+<h1 align="center">Gen1AutoContinue</h1>
+
+<p align="center">
+  <a href="https://wild1walker.github.io/Gen1Wild/"><img src="docs/lineup.png" alt="Check out my other mods!" width="880"></a>
+</p>
+
+<p align="center">
+  <b>Boot to title, one press, playing</b>
+</p>
 
 Press START or A at the title screen and your save loads. No CONTINUE / NEW
 GAME / OPTION menu, no PLAYER / BADGES / POKéDEX / TIME window — one press
