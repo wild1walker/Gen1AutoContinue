@@ -1,4 +1,10 @@
-# Gen1AutoContinue
+<p align="center">
+  <img src="docs/banner.png" alt="Gen1AutoContinue" width="470">
+</p>
+
+<p align="center">
+  <b>Boot to title, one press, playing</b>
+</p>
 
 Press START or A at the title screen and your save loads. No CONTINUE / NEW
 GAME / OPTION menu, no PLAYER / BADGES / POKéDEX / TIME window — one press
