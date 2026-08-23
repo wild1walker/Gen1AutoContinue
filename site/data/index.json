@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-22T20:16:39Z",
+  "generated_at": "2026-08-23T04:47:26Z",
   "count": 1,
   "categories": [
     "GAMEPLAY",
@@ -22,7 +22,7 @@
       "id": "gen1_auto_continue",
       "title": "Gen1AutoContinue",
       "author": "Wild",
-      "version": "1.2.0",
+      "version": "1.2.2",
       "summary": "Boot to title, one press, playing. Skips the intro, the CONTINUE / NEW GAME menu and the save-info window.",
       "categories": [
         "QOL",

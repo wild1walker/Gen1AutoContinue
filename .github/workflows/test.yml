@@ -76,7 +76,7 @@ jobs:
           git archive HEAD | tar -t | sort > /tmp/archive.txt
           cat /tmp/archive.txt
           grep -qx 'manifest.json' /tmp/archive.txt
-          for leaked in tests/ .github/ site/ tools/; do
+          for leaked in tests/ .github/ docs/ site/ tools/; do
             if grep -q "^${leaked}" /tmp/archive.txt; then
               echo "::error::${leaked} leaked into the archive"; exit 1
             fi

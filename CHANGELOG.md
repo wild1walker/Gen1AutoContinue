@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.2.2
+
+- **Packaging fix; the mod itself is unchanged from 1.2.0.** The README's
+  artwork was being packed into the installable `.zip`, which took the archive
+  from 4 KB to 445 KB -- 441 KB of it a banner the game never draws. `docs/` is
+  export-ignored now, so the zip is mod files only again.
+- A README-only change no longer cuts a release. `docs/**` joined the release
+  workflow's `paths-ignore`, alongside `**.md`; without it, adding the banner
+  triggered a run, and with `manifest.json` still reading 1.2.0 the workflow
+  fell through to its patch-bump rule and published a 1.2.1 nobody asked for.
+- That left the index feed advertising 1.2.0 while
+  `releases/latest/download/gen1_auto_continue.zip` handed out 1.2.1, so an
+  update check had no coherent version to land on. The manifest, the feed and
+  the release all read 1.2.2 now.
+- CI checks `docs/` for archive leaks the way it already checked `tests/`,
+  `.github/`, `site/` and `tools/`.
+
 ## 1.2.0
 
 - **`SKIP INTRO` (on by default) skips the screens before the title**: the

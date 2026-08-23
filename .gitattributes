@@ -4,10 +4,15 @@
 # tests/ is the important one: the suite requires engine modules
 # (tests.modkit, src.mods.Runtime), which would be a private-require finding
 # against the packaged archive.  It belongs in the repo and not in the zip.
+#
+# docs/ is the README's artwork.  It is rendered on the GitHub page and nowhere
+# else, and it is far bigger than the mod -- unlisted here it made the 1.2.1
+# archive 445 KB, of which 441 KB was a banner the game never draws.
 tests/ export-ignore
 .github/ export-ignore
 README.md export-ignore
 CHANGELOG.md export-ignore
+docs/ export-ignore
 .gitattributes export-ignore
 .modkitignore export-ignore
 site/ export-ignore
