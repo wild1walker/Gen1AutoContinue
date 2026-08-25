@@ -31,7 +31,12 @@ jobs:
           path: mod
 
       - name: Install Lua
-        run: sudo apt-get update && sudo apt-get install -y lua5.4
+        # LuaJIT as well as lua5.4: the SDK suite below runs under the engine's
+        # own harness, and that harness reaches src/mods/StreamMD5 (via
+        # Loader -> CartManifest), which needs a bit library. Lua 5.4 dropped
+        # bit32 and never had bit; LuaJIT ships bit. The syntax checks stay on
+        # lua5.4 because that is the stricter parser of the two.
+        run: sudo apt-get update && sudo apt-get install -y lua5.4 luajit
 
       - name: Syntax check
         working-directory: mod
@@ -66,7 +71,7 @@ jobs:
       - name: Run the suite
         working-directory: engine
         # the harness sets the exit code itself, so a FAILURES line fails here
-        run: lua5.4 "mods/$MOD_ID/tests/${MOD_ID}_test.lua"
+        run: luajit "mods/$MOD_ID/tests/${MOD_ID}_test.lua"
 
       - name: The packaged archive is what the installer expects
         working-directory: mod
