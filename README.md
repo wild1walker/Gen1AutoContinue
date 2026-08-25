@@ -175,3 +175,14 @@ one-frame delay the SELECT path relies on is actually exercised. It is `export-i
 `.gitattributes` — and listed in `.modkitignore` for anyone packing with
 modkit instead — so the engine requires it needs do not ship in the packaged
 archive.
+
+---
+
+## Credits
+
+By **Wild**.
+
+Built on the boot and menu seams of [Pokemon Gen1Recomp](https://github.com/bryanthaboi/gen1recomp), and on the [pret](https://github.com/pret) disassembly of
+Pokemon Red, Blue and Yellow: `engine/movie/title.asm` and
+`engine/menus/main_menu.asm` are the flow this mod shortens, and reading them is
+how it knows which steps are safe to skip.
