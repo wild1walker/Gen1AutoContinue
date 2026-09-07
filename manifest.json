@@ -1,7 +1,7 @@
 {
   "id": "gen1_auto_continue",
   "name": "Gen1AutoContinue",
-  "version": "1.2.2",
+  "version": "1.3.0",
   "api": 2,
   "entry": "main.lua",
   "profile": "content",
@@ -14,7 +14,8 @@
   "conflicts": [],
   "incompatible": [],
   "games": [
-    "gen1"
+    "gen1",
+    "gen2"
   ],
   "experimental": false,
   "description": "Boots straight to the title, then START loads your save. Skips the copyright card and attract movie, the CONTINUE / NEW GAME menu, and the save-info window. B exits; SELECT opens the ordinary menu.",

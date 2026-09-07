@@ -149,6 +149,20 @@ menu straight back down within the same update (nothing is ever drawn), and runs
 the real row. If no row can be identified it logs and does nothing, because a
 dead button beats a menu you did not ask for.
 
+## On Gold, Silver and Crystal
+
+It works there too, and it has two screens to get past rather than one.
+
+Red opens on a title screen and that is the whole of it. Gold boots through
+its own splash first — the copyright and the Ho-Oh flight — and *then* shows
+the title. So there are two attach points, not one: the boot sequence and the
+title screen, each recognised on its own. Miss either and the mod either does
+nothing or fires into the wrong screen, which is why they are separate checks
+rather than one guess.
+
+Everything else is the same: the same rows, the same buttons, and the same rule
+that a save with nothing to continue is left alone.
+
 ## Compatibility
 
 - **Link play** — `affects_link: false`. Nothing in a link fingerprint

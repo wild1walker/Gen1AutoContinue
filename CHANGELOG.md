@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.3.0
+
+- **Runs on Gold, Silver and Crystal.** The manifest declares `gen2`.
+
+  There are two screens to get past there rather than one. Red opens on its
+  title screen and that is the whole of it; Gold boots through its own splash
+  first — the copyright and the Ho-Oh flight — and shows the title after. So
+  the mod has two attach points, recognised separately: miss either and it
+  does nothing, or fires into the wrong screen. The same rows, the same
+  buttons, and the same rule that a save with nothing to continue is left
+  alone.
+
+
 ## 1.2.2
 
 - **Packaging fix; the mod itself is unchanged from 1.2.0.** The README's
